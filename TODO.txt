@@ -1,0 +1,19 @@
+TODO.txt
+
+1. Restore original Whispernote arguments
+2. Split script into lib.py, KindleHighlights.py, EvernoteAPI.py
+3. Duplicate original Whispernote testing suite
+4. Improve error handling
+5. If -n --notebook is not recognized, ask user if they want to create it
+6. Automatically remove sleep(n) if notes < 250 -- highlights will have an 
+   attribute highlights.n == len(n). When highlights is passed to the 
+   Evernote API object, it will determine whether sleep == 0 or sleep == 2.
+7. If content of note generates error message, display note with hints
+8. Reference the internal ID in error messages to help debugging (i.e., 
+   EDAMUserException(errorCode=11))
+9. Create hidden .cache file containing the IDs of each note already added,
+   eliminating the need for batchIDs; provide an option to clear .cache like
+   python whispernote.py clear_cache
+
+$ git remote add origin https://github.com/username/new_repo
+$ git push -u origin master

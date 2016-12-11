@@ -50,7 +50,7 @@ class EvernoteAPI(object):
                 break
             except Errors.EDAMSystemException as e:
                 if e.errorCode == Errors.EDAMErrorCode.RATE_LIMIT_REACHED:
-                    self.__handle_rate_limit(e)
+                    self._handle_rate_limit(e)
                 else:
                     raise e
                 self.logger.info('Retry no. %d' % i)
@@ -64,13 +64,13 @@ class EvernoteAPI(object):
         self.notebook_map = self.map_notebook_guids()
 
 
-    def __handle_rate_limit(self, e):
+    def _handle_rate_limit(self, e):
         """ Wait out rate limit
         """
         wait = int(e.rateLimitDuration) + 60
         self.logger.warn('API rate limit exceeded, '
-                         'sleeping for %d seconds, 
-                         'resuming at %s' % (wait, now_plus_seconds(wait))
+                         'sleeping for %d seconds, '
+                         'resuming at %s' % (wait, now_plus_seconds(wait)))
         limit_exceeded()
         print('\n. . . Script will automatically resume in %d seconds . . .\n' % wait)
         sleep(wait)
@@ -154,7 +154,7 @@ class EvernoteAPI(object):
                 continue
             except Errors.EDAMSystemException as e:
                 if e.errorCode == Errors.EDAMErrorCode.RATE_LIMIT_REACHED:
-                    self.__handle_rate_limit(e)
+                    self._handle_rate_limit(e)
                 else:
                     raise e
                 self.logger.info('Retry no. %d' % i)
@@ -186,7 +186,7 @@ class KindleHighlights(object):
     """
 
     def __init__(self, html_file):
-        self._highlights = self.__get_all_highlights(html_file)
+        self._highlights = self._get_all_highlights(html_file)
 
         self.logger = logging.getLogger('whispernote')
         self.logger.info('Initializing Kindle Highlights')
@@ -205,7 +205,7 @@ class KindleHighlights(object):
         return self._highlights[i]
 
 
-    def __create_enid(self, huri): 
+    def _create_enid(self, huri): 
         """
         Creates an Evernote unique ID based on the highlight's URI. 
         A Kindle highlight is composed of a 'asin', or ISBN of the book, 
@@ -226,13 +226,13 @@ class KindleHighlights(object):
         return asin + loc
 
 
-    def __get_all_highlights(self, html_file):
+    def _get_all_highlights(self, html_file):
         html_doc = open(html_file, 'r').read()
-        parsed = self.__parse_books(html_doc)
-        return self.__extract_highlights(parsed)
+        parsed = self._parse_books(html_doc)
+        return self._extract_highlights(parsed)
 
 
-    def __parse_books(self, html):
+    def _parse_books(self, html):
        """ Pass in the HTML from the myhighlights.html page, and function adds 
        hierarchy to page. All of a book's highlights divs are subsumed beneath
        the book itself. This allows the highlights to include general book 
@@ -259,7 +259,7 @@ class KindleHighlights(object):
        return new_markup
 
 
-    def __extract_highlights(self, html):
+    def _extract_highlights(self, html):
         """
         Returns an array of highlight dictionaries - content, link,
         and generated IDs - for all books.
@@ -287,7 +287,7 @@ class KindleHighlights(object):
                         book_author=book_author,
                         text=highlight.string,
                         link=highlight.nextSibling.attrs['href'],
-                        id=self.__create_enid(highlight
+                        id=self._create_enid(highlight
                                               .nextSibling.attrs['href'])
                     )
                 )

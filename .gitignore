@@ -1,0 +1,14 @@
+# Backup and temporary files
+*.bak
+*.tmp
+tmp*
+*~
+~*
+
+# Artifacts
+*.pyc
+.idea/
+output/
+.picasa*
+source/myhighlights.html
+source/en_token.txt
