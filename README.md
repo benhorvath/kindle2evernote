@@ -23,6 +23,7 @@ Then go the installed directoy and run setup.py:
 	python setup.py install
 	
 Finally, you will need pyfiglet:
+
     pip install pyfiglet
 
 ### Evernote Developer Token
@@ -45,15 +46,15 @@ The path to this HTML file is a required argument to Kindle2Evernote.py.
 
 Open a terminal window and run:
    
-    python kindle2evernote.py myhighlights.txt en_auth.txt
+    python kindle2evernote.py myhighlights.html en_auth.txt
 
 If you wish to specify a specific notebook to add the highlights to, use the -n or --notebook option:
 
-    python kindle2evernote.py myhighlights.txt en_auth.txt -n Books
+    python kindle2evernote.py myhighlights.html en_auth.txt -n Books
 
 To see log output, use the -v or --verbose option
 
-    python kindle2evernote.py myhighlights.txt en_auth.txt -v
+    python kindle2evernote.py myhighlights.html en_auth.txt -v
 
 ## About
 
