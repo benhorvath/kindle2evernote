@@ -1,9 +1,11 @@
 # Kindle2Evernote
 
-**UPDATE** (April 2018): This repository no longer functions since (Amazon
-overhauled)[https://ebookfriendly.com/new-amazon-kindle-highlights-mobile-friendly/]
-read.amazon.com last year. Updating the Kindle parser object would now require
-tons of Selenium work, which I don't want to do.
+**UPDATE** (March 2019): This repository no longer functions since [Amazon
+overhauled](https://ebookfriendly.com/new-amazon-kindle-highlights-mobile-friendly/)
+read.amazon.com last year.
+
+HOWEVER, a version using Kindle's My Clippings.txt is also available in the
+[kindle2evernote2 repo](https://github.com/benhorvath/kindle2evernote2).
 
 ~~This repository contains an easy-to-use, flexible script to add your Kindle highlights to Evernote. Unlike similar projects, it makes direct use of the Evernote API and aims to add all of your highlights in one go, whether you have just a few, or like me, several thousand.~~
 
